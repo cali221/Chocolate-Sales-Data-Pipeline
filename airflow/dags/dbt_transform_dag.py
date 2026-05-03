@@ -14,6 +14,8 @@ with DAG(dag_id='dbt_transform',
          catchup=False,
          max_active_runs=1,
          schedule=timedelta(minutes=10)) as dbt_transform_dag:
+    
+    # in production, this probably needs to be switched into KubernetesPodOperator
     dbt_transform_task = DockerOperator(task_id='dbt_transform',
                                         image='transform',
                                         command=["dbt", "build"],
