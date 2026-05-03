@@ -76,7 +76,7 @@ def load_hourly_order_count_data(engine):
     load the data for hourly order count
     for orders from the online store
     """
-    sql_query = f"""
+    sql_query = """
                 WITH hours AS(
                     SELECT generate_series(
                         DATE_TRUNC('hour', NOW() - INTERVAL '24 hours'),
